@@ -30,18 +30,29 @@ set_target_properties(fnames PROPERTIES
 set_target_properties(fnames PROPERTIES POSITION_INDEPENDENT_CODE ON)
 
 target_compile_options(fnames PRIVATE
-  -Wunused-variable
   -Wall
   -Werror
   -std=c99 -O3 -flto -march=native)
 
 target_link_options(fnames PRIVATE -flto)
 
-if(UNIX)
-  add_custom_command(TARGET fnames POST_BUILD
-    COMMAND ${CMAKE_STRIP} $<TARGET_FILE:fnames>
-    COMMENT "Stripping debug symbols from fnames.so")
-endif()
+# if(CMAKE_GENERATOR MATCHES "Unix Makefiles")
+#   set(BUILDER make)
+# elseif(CMAKE_GENERATOR MATCHES "Ninja")
+#   set(BUILDER ninja)
+# else()
+#   message(FATAL_ERROR "set CMAKE_GENERATOR='Unix Makefiles'|'Ninja'")
+# endif()
+#
+# add_custom_command(TARGET fnames
+#   COMMAND ${CMAKE_COMMAND} -E chdir ${CMAKE_BINARY_DIR} ${BUILDER}
+#                                                         && ${BUILDER} install
+#   WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+#   COMMENT "building library"
+# )
+add_custom_command(TARGET fnames POST_BUILD
+  COMMAND ${CMAKE_STRIP} $<TARGET_FILE:fnames>
+  COMMENT "Stripping debug symbols from fnames.so")
 # Configurable install path
 # set(NEOVIM_LIB_DIR
 #   "$ENV{HOME}/.local/share/nvim/libso" CACHE PATH
