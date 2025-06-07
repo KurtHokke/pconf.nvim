@@ -1,0 +1,8 @@
+[
+{
+  "directory": "/home/src/pconf.nvim/src/build",
+  "command": "/usr/bin/cc -Dfnames_EXPORTS -I/usr/include/luajit-2.1 -fPIC -Wunused-variable -Wall -Werror -std=c99 -O3 -flto -march=native -o CMakeFiles/fnames.dir/fnames.c.o -c /home/src/pconf.nvim/src/fnames.c",
+  "file": "/home/src/pconf.nvim/src/fnames.c",
+  "output": "CMakeFiles/fnames.dir/fnames.c.o"
+}
+]
