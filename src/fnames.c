@@ -80,7 +80,7 @@ static const struct luaL_Reg fnames[] = {
     {NULL, NULL} // Sentinel
 };
 
-int luaopen_pconf_lib_fnames(lua_State *L) {
+int luaopen_fnames(lua_State *L) {
     luaL_openlib(L, "fnames", fnames, 0); // Register functions in global table 'mylib'
     return 1;                           // Return the table
 }
