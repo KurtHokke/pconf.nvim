@@ -58,6 +58,6 @@ add_custom_command(TARGET fnames POST_BUILD
 #   "$ENV{HOME}/.local/share/nvim/libso" CACHE PATH
 #   "Neovim shared library install directory")
 
-install(TARGETS fnames DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/../lib)
+install(TARGETS fnames DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/../lua/pconf/lib)
 
 # install(TARGETS fnames DESTINATION /home/arcno/.local/share/nvim/libso)
